@@ -5,6 +5,9 @@ namespace Controllers\Admin;
 class Index {
     public function index() {
 
+        \GF\App::getInstance()->displayError(404);
+        exit;
+
         $val = new \GF\Validation();
         $val->setRule('url', 'http://az.c@/', null, 'URL is not valid')
             ->setRule('minlength', 'http://az.c/', 50, 'Min length is not valid');
