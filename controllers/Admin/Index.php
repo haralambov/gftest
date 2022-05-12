@@ -2,12 +2,9 @@
 
 namespace Controllers\Admin;
 
-class Index {
+class Index extends \GF\DefaultController {
+
     public function index() {
-
-        \GF\App::getInstance()->displayError(404);
-        exit;
-
         $val = new \GF\Validation();
         $val->setRule('url', 'http://az.c@/', null, 'URL is not valid')
             ->setRule('minlength', 'http://az.c/', 50, 'Min length is not valid');
@@ -18,9 +15,8 @@ class Index {
         }
         echo '=========<br/>';
 
-        $view = \GF\View::getInstance();
-        $view->username = 'John Doe';
-        $view->appendToLayout('body', 'admin.index');
-        $view->display('layouts.default', array('email' => 'john.doe@domain.com'));
+        $this->view->username = 'John Doe';
+        $this->view->appendToLayout('body', 'admin.index');
+        $this->view->display('layouts.default', array('email' => 'john.doe@domain.com'));
     }
 }
